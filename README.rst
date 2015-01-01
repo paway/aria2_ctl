@@ -19,4 +19,4 @@ FlashGot configuration
 Custom download manager settings for FlashGot:
 
 :Executable path: *python interpreter path*
-:Command line arguments template: *aria2_ctl.py path* ``[URL] [-i UFILE] [-d FOLDER] [--referer=REFERER] [--cookie=COOKIE]``
+:Command line arguments template: *aria2_ctl.py path* ``[URL] [-i UFILE] [-d FOLDER] [--referer=REFERER] [--cookie=COOKIE] [--ua=UA] [--filename=FNAME]``
