@@ -18,6 +18,7 @@ def path_for_url(url, base_path):
 def collect_options(url, options):
     download_options = {}
     download_options['remote-time'] = 'true'
+    download_options['header'] = ''#added by paway
     if options.dest_folder:
         path = path_for_url(url, options.dest_folder)
         if not os.path.exists(path):
@@ -25,8 +26,10 @@ def collect_options(url, options):
         download_options['dir'] = path
     if options.referer:
         download_options['referer'] = options.referer
-    if options.cookie:
-        download_options['header'] = 'Cookie:' + options.cookie
+    if options.ua:#User-Agent,added by paway
+        download_options['header'] += 'User-Agent:' + options.ua
+    if options.filename:#filename,added by paway
+        download_options['out'] = options.filename
     return download_options
 
 base_path = os.path.dirname(os.path.realpath(__file__))
@@ -38,6 +41,8 @@ parser.add_option('-d', '--dest-folder')
 parser.add_option('-i', '--input')
 parser.add_option('--referer')
 parser.add_option('--cookie')
+parser.add_option('--ua')#added by paway
+parser.add_option('--filename')#added by paway
 (options, args) = parser.parse_args()
 
 if options.input:
